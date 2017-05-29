@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @pick.user_id
+%p
+  %b Article:
+  = @pick.article_id
+
+= link_to 'Edit', edit_pick_path(@pick)
+\|
+= link_to 'Back', picks_path

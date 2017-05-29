@@ -1,0 +1,23 @@
+%h1 Listing picks
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Article
+      %th
+      %th
+      %th
+
+  %tbody
+    - @picks.each do |pick|
+      %tr
+        %td= pick.user_id
+        %td= pick.article_id
+        %td= link_to 'Show', pick
+        %td= link_to 'Edit', edit_pick_path(pick)
+        %td= link_to 'Destroy', pick, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Pick', new_pick_path
