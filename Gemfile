@@ -63,3 +63,9 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
 end
+
+
+
+source "https://rubygems.org"
+ENV['NOKOGIRI_USE_SYSTEM_LIBRARIES'] = 'YES'
+gem 'nokogiri'
