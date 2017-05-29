@@ -1,24 +1,115 @@
-# README
+# DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+  |Column       |Type      |Options                   |
+  |:-----------:|:--------:|:------------------------:|
+  |name         |string    |null: false, unique: true , add_index|
+  |job          |string    |null: false               |
+  |infomation   |text      |                          |
+  |Email        |string    |null: false, unique: true |
+  |face         |image     |                          |
+  |password     |string    |null:false                |
+  |timestamps   |timestamps|                          |
 
-* Ruby version
+## Association  
 
-* System dependencies
+  - has_many :articles, through: :user_article
+  - has_many :picks
+  - has_many :user_article
 
-* Configuration
+*****
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## articles table  
 
-* Services (job queues, cache servers, search engines, etc.)
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |title        |string       |                          |
+  |image        |string       |                          |
+  |source       |string       |                          |
+  |timestamps   |timestamps   |                          |
 
-* Deployment instructions
+## Association  
 
-* ...
+  - has_many :users, through: :user_article
+  - has_many :picks
+  - has_many :user_article
+
+*****
+
+
+
+## user_articles table  
+
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |user_id      |references   |ON UPDATE CASCADE ON DELETE CASCADE|
+  |chatgroup_id |references   |ON UPDATE CASCADE ON DELETE CASCADE|
+
+
+## Association  
+
+  - belongs_to :user
+  - belongs_to :article
+
+*****
+
+
+
+## follows table  
+
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |user_id      |string       |                          |
+  |follow_id    |string       |                          |
+  |timestamps   |timestamps   |                          |
+
+## Association  
+
+  - belongs_to :user
+
+
+
+## picks table
+
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |user_id      |string       |ON UPDATE CASCADE ON DELETE CASCADE|
+  |article_id   |string       |ON UPDATE CASCADE ON DELETE CASCADE|
+  |timestamps   |timestamps   |                          |
+
+## Association  
+
+  - belongs_to :user
+  - belongs_to :article
+  - has_one :comment
+
+
+
+## comments table
+
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |coment       |text         |                          |
+  |pick_id      |string       |ON UPDATE CASCADE ON DELETE CASCADE|
+
+## Association  
+
+  - belongs_to :pick
+
+
+
+## likes table
+
+  |Column       |Type         |Options                   |
+  |:-----------:|:-----------:|:------------------------:|
+  |coment_id    |string       |ON UPDATE CASCADE ON DELETE CASCADE|
+  |user_id      |string       |ON UPDATE CASCADE ON DELETE CASCADE|
+  |like         |boolean      |                          |
+  |timestamps   |timestamps   |                          |
+
+
+  - belongs_to :user
+  - belongs_to :picks
