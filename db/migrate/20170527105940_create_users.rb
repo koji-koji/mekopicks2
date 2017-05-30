@@ -8,5 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :face
       t.string :password
       t.timestamps
+    end
   end
 end
