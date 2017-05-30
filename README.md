@@ -41,7 +41,7 @@
 
 
 
-## user_articles table  
+## users_articles table  
 
   |Column       |Type         |Options                   |
   |:-----------:|:-----------:|:------------------------:|
