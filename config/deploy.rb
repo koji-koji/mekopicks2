@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-set :application, 'mokopicks2'
+set :application, 'mekopicks2'
 set :repo_url, 'git@github.com:koji-koji/mekopicks2.git'
 
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
