@@ -71,7 +71,6 @@
   - belongs_to :user
 
 
-
 ## picks table
 
   |Column       |Type         |Options                   |
