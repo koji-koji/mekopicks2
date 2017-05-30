@@ -1,25 +1,122 @@
-%h1 Listing articles hoge
-
-%table
-  %thead
-    %tr
-      %th Title
-      %th Image
-      %th Source
-      %th
-      %th
-      %th
-
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.image
-        %td= article.source
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Article', new_article_path
+.header
+  .header__menu
+  .header__detection
+  .header__logo
+  .header__user
+    .header__user-face
+    .header__user-name
+    .header__user-style
+  .header__info
+  .header__pick
+.menu
+  .menu__user
+    .menu__user__face
+    .menu__user__name
+    .menu__user__job
+  .menu__state
+    .menu__state__following
+    .menu__state__followed
+  .menu__state__timeline
+  .menu__timeline
+    .menu__timeline__face
+    .menu__timeline__name
+    .menu__timeline__picktime
+    .menu__timeline__comment
+    .menu__timeline__article-name
+    .menu__timeline__article-pick
+.contents
+  .contents__top
+    .contents__top-center
+      .contents__top-center__picknumber
+      .contents__top-center__title
+      .contents__top-center__newssource
+    .contents__top-right-top
+      .contents__top-right-top__picknumber
+      .contents__top-right-top__title
+      .contents__top-right-top__newssource
+    .contents__top-right-bottom
+      .contents__top-right-bottom__picknumber
+      .contents__top-right-bottom__title
+      .contents__top-right-bottom__source
+  .contents__news
+    .contents__news__pick
+      .contents__news__pick__image
+      .contents__news__pick__number
+      .contents__news__pick__title
+      .contents__news__pick__picker
+        .contents__news__pick__picker__face
+        .contents__news__pick__picker__name
+        .contents__news__pick__picker__job
+        .contents__news__pick__picker__comment
+      .contents__news__pick__pickers-face
+      .contents__news__pick__source
+    .contents__news__new-arrival
+      .contents__news__new-arrival__headline
+      .contents__news__new-arrival__news
+        .contents__news__new-arrival__news__title
+        .contents__news__new-arrival__news__source
+    .contents__news__recomend
+      .contents__news__recomend__tab
+      .contents__news__recomend__title
+      .contents__news__recomend__subtitle
+      .contents__news__recomend__link
+    .contents__news__original
+      .contents__news__original__line
+        %h2 NewaPicks オリジナル記事
+        %h4 NewsPicks オリジナル記事 一覧を見る
+      .contents__news__original__box
+    .contents__news__feature
+      .contents__news__feature__line
+        %h2 特集：新・経営者の条件
+        %h4 特集：新・経営者の条件 一覧を見る
+      .contents__news__feature__box
+    .contents__news__inovation
+      .contents__news__inovation__line
+        %h2 イノベーション
+        .logo
+        %h4 イノベーション 一覧を見る
+      .contents__news__inovation__box
+    .contents__news__tech
+    .contents__news__business
+    .contents__news__original
+    .contents__news__feature
+    .contents__news__inovation
+    .contents__news__political-economy
+    .contents__news__market
+    .contents__news__education
+    .contents__news__social
+    .contents__news__job
+    .contents__news__good-old
+    .contents__news__analysis
+  .contents__ranking__user
+    .contents__ranking__user__line
+      %h2 ユーザーランキング
+      %h4 ユーザーランキング 一覧を見る
+    .contents__ranking__user__box
+      .number
+      .contents__ranking__user__box__face
+      .contents__ranking__user__box__info
+        .contents__ranking__user__box__info__name
+        .contents__ranking__user__box__info__tag
+        .contents__ranking__user__box__info__job
+        .contents__ranking__user__box__info__like_number
+      .contents__ranking__user__box___follow-tag
+  .contents__ranking__comment
+    .contents__ranking__comment__line
+      %h2 コメントランキング
+      %h4 コメントランキング 一覧を見る
+    .contents__ranking__comment__box
+      .contents__ranking__comment__box__user
+        .contents__ranking__comment__box__number
+        .contents__ranking__comment__box__face
+        .contents__ranking__comment__box__name
+        .contents__ranking__comment__box__job
+        .contents__ranking__comment__box__likes
+        .comments__ranking__comment__box__tag
+      .contents__ranking__comment__box__comment
+      .contents__ranking__comment__box__source
+        .contents__ranking__comment__box__source__title
+        .contents__ranking__comment__box__source__publisher
+.footer
+  .footer__line
+  .footer__tag
