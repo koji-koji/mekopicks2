@@ -1,0 +1,31 @@
+.header {
+  width: 100vw;
+  height: 50px;
+  background-color: #15274D;
+  &__menu{
+    color:red;
+  }
+}
+
+.menu {
+  height: 100vw;
+  width: 192px;
+  background-color: gray;
+  box-sizing: content-box;
+  float: left;
+  padding-top: 24px;
+  &__user__face {
+    width: 48px;
+    height: 48px;
+    background-color: pink;
+    margin: 0 auto
+  }
+}
+
+.contents {
+  &__top{
+    width: 100vw;
+    height: 262.95px;
+    background-color: yellow;
+  }
+}
