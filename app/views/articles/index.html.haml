@@ -1,7 +1,6 @@
 .header
   .header__menu
-    =link_to "ログアウト", destroy_user_session_path
-    =@article.find(1).users.first.name
+    =link_to "ログアウト", destroy_user_session_path ,method: :delete
   .header__detection
   .header__logo
   .header__user
@@ -26,6 +25,7 @@
     .menu__timeline__comment
     .menu__timeline__article-name
     .menu__timeline__article-pick
+
 .contents
   .contents__top
     .contents__top-center
