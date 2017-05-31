@@ -20,7 +20,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string   :last_sign_in_ip
 
       t.string :name
-      t.string :job
+      t.string :company
+      t.string :position
       t.text :infomation
       t.string :face
 

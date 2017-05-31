@@ -5,7 +5,8 @@
   |Column       |Type      |Options                   |
   |:-----------:|:--------:|:------------------------:|
   |name         |string    |null: false, unique: true , add_index|
-  |job          |string    |null: false               |
+  |company      |string    |null: false               |
+  |position     |string    |                          |
   |infomation   |text      |                          |
   |Email        |string    |null: false, unique: true |
   |face         |image     |                          |

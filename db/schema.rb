@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530105003) do
+ActiveRecord::Schema.define(version: 20170530115046) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170530105003) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_articles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "user_id",    null: false
+    t.integer "article_id", null: false
+    t.index ["article_id"], name: "index_user_articles_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_user_articles_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                default: "", null: false
     t.string   "encrypted_password",                   default: "", null: false
@@ -39,7 +46,8 @@ ActiveRecord::Schema.define(version: 20170530105003) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "job"
+    t.string   "company"
+    t.string   "position"
     t.text     "infomation",             limit: 65535
     t.string   "face"
     t.datetime "created_at",                                        null: false
@@ -48,13 +56,6 @@ ActiveRecord::Schema.define(version: 20170530105003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "users_articles", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "user_id",    null: false
-    t.integer "article_id", null: false
-    t.index ["article_id"], name: "index_users_articles_on_article_id", using: :btree
-    t.index ["user_id"], name: "index_users_articles_on_user_id", using: :btree
-  end
-
-  add_foreign_key "users_articles", "articles"
-  add_foreign_key "users_articles", "users"
+  add_foreign_key "user_articles", "articles"
+  add_foreign_key "user_articles", "users"
 end
