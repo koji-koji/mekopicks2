@@ -46,7 +46,8 @@ ActiveRecord::Schema.define(version: 20170530115046) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "job"
+    t.string   "company"
+    t.string   "position"
     t.text     "infomation",             limit: 65535
     t.string   "face"
     t.datetime "created_at",                                        null: false
