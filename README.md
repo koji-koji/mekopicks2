@@ -29,7 +29,7 @@
   |:-----------:|:-----------:|:------------------------:|
   |url          |text         |                          |
   |title        |string       |                          |
-  |text         |string       |                          |
+  |text         |text         |                          |
   |image        |string       |                          |
   |source       |string       |                          |
   |timestamps   |timestamps   |                          |
