@@ -27,7 +27,9 @@
 
   |Column       |Type         |Options                   |
   |:-----------:|:-----------:|:------------------------:|
+  |url          |text         |                          |
   |title        |string       |                          |
+  |text         |string       |                          |
   |image        |string       |                          |
   |source       |string       |                          |
   |timestamps   |timestamps   |                          |
