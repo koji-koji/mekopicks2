@@ -1,6 +1,9 @@
 .header
   .header__menu
     =link_to "ログアウト", destroy_user_session_path ,method: :delete
+    =link_to "ログイン", new_user_session_path
+    - if user_signed_in?
+      =link_to "#{current_user.name}",'https://github.com/'
   .header__detection
   .header__logo
   .header__user
@@ -9,22 +12,54 @@
     .header__user-style
   .header__info
   .header__pick
-.menu
-  .menu__user
-    .menu__user__face hogehogehogehoge
-    .menu__user__name
-    .menu__user__job
-  .menu__state
-    .menu__state__following
-    .menu__state__followed
-  .menu__state__timeline
-  .menu__timeline
-    .menu__timeline__face
-    .menu__timeline__name
-    .menu__timeline__picktime
-    .menu__timeline__comment
-    .menu__timeline__article-name
-    .menu__timeline__article-pick
+-if user_signed_in?
+  .menu
+    .menu__user
+      .menu__user__box
+        .menu__user__box__face
+        .menu__user__box__name=current_user.name
+        .menu__user__box__job="#{current_user.company} #{+current_user.position}"
+      .menu__user__state.clearfix
+        .menu__user__state__following
+          %p6 0
+          %p フォロー
+        .menu__user__state__followed
+          %h6 0
+          %p フォロワー
+    .menu__pickstream
+      %p タイムライン
+    .menu__timeline
+      .menu__timeline__face
+      .menu__timeline__name
+      .menu__timeline__picktime
+      .menu__timeline__comment
+      .menu__timeline__article-name
+      .menu__timeline__article-pick
+
+-else
+  .menu
+    .menu__user
+      .menu__user__box
+        .menu__user__box__face
+        .menu__user__box__name No Account
+        .menu__user__box__signup
+          =link_to 'アカウントを作成する', new_user_registration_path
+      .menu__user__state.clearfix
+        .menu__user__state__following
+          %p6 -
+          %p フォロー
+        .menu__user__state__followed
+          %h6 -
+          %p フォロワー
+    .menu__pickstream
+      %p 人気ユーザー
+    .menu__timeline
+      .menu__timeline__face
+      .menu__timeline__name
+      .menu__timeline__picktime
+      .menu__timeline__comment
+      .menu__timeline__article-name
+      .menu__timeline__article-pick
 
 .contents
   .contents__top
@@ -32,31 +67,51 @@
       .contents__top-center__picknumber
       .contents__top-center__title
       .contents__top-center__newssource
-    .contents__top-right-top
-      .contents__top-right-top__picknumber
-      .contents__top-right-top__title
-      .contents__top-right-top__newssource
-    .contents__top-right-bottom
-      .contents__top-right-bottom__picknumber
-      .contents__top-right-bottom__title
-      .contents__top-right-bottom__source
+    .contents__top-right
+      .contents__top-right-top
+        .contents__top-right-top__picknumber
+        .contents__top-right-top__title
+        .contents__top-right-top__newssource
+      .contents__top-right-bottom
+        .contents__top-right-bottom__picknumber
+        .contents__top-right-bottom__title
+        .contents__top-right-bottom__source
   .contents__news
-    .contents__news__pick
-      .contents__news__pick__image
-      .contents__news__pick__number
-      .contents__news__pick__title
-      .contents__news__pick__picker
-        .contents__news__pick__picker__face
-        .contents__news__pick__picker__name
-        .contents__news__pick__picker__job
-        .contents__news__pick__picker__comment
-      .contents__news__pick__pickers-face
-      .contents__news__pick__source
-    .contents__news__new-arrival
-      .contents__news__new-arrival__headline
-      .contents__news__new-arrival__news
-        .contents__news__new-arrival__news__title
-        .contents__news__new-arrival__news__source
+    .contents__news__picks
+      .contents__news__picks__new-arrival
+        .contents__news__picks__new-arrival__headline 新着ニュース
+        .contents__news__picks__new-arrival__news
+          =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__news__picks__new-arrival__news-link'
+          .contents__news__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
+          .contents__news__picks__new-arrival__news__source マッシュメディア 224分前
+      .news__box
+        .news__box__image
+        .news__box__number 0
+        .news__box__title 日本版GPS衛生「みちびき」を打ち上げ
+        .news__box__picker.clearfix
+          .news__box__picker__face
+          .news__box__picker__name 川奈 一郎
+          .news__box__picker__job JapanTaxi 日本交通
+          .news__box__picker__comment 待ってました！導きを利用し、2年以内にタクシーメーターをアプリ化します！
+        %ul.news__box__pickers.clearfix
+          %li.news__box__pickers__face
+          %li.news__box__pickers__face
+          %li.news__box__pickers__face
+          %li.news__box__pickers__face
+          %li.news__box__pickers__face
+        .news__box__source ホゲホゲ
+
+      / .contents__news__pick__image
+      / .contents__news__pick__number
+      / .contents__news__pick__title
+      / .contents__news__pick__picker
+      /   .contents__news__pick__picker__face
+      /   .contents__news__pick__picker__name
+      /   .contents__news__pick__picker__job
+      /   .contents__news__pick__picker__comment
+      / .contents__news__pick__pickers-face
+      / .contents__news__pick__source
+
     .contents__news__recomend
       .contents__news__recomend__tab
       .contents__news__recomend__title
@@ -82,10 +137,15 @@
     .contents__news__business
     .contents__news__original
     .contents__news__feature
-    .contents__news__inovation
     .contents__news__political-economy
     .contents__news__market
     .contents__news__education
+
+
+
+
+
+
     .contents__news__social
     .contents__news__job
     .contents__news__good-old
