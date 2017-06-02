@@ -1,6 +1,9 @@
 .header
   .header__menu
     =link_to "ログアウト", destroy_user_session_path ,method: :delete
+    =link_to "ログイン", new_user_session_path
+    - if user_signed_in?
+      =link_to "#{current_user.name}",'https://github.com/'
   .header__detection
   .header__logo
   .header__user
@@ -9,28 +12,55 @@
     .header__user-style
   .header__info
   .header__pick
-.menu
-  .menu__user
-    .menu__user__box
-      .menu__user__box__face
-    .menu__user__name
-    .menu__user__job
-    .menu__user__state.clearfix
-      .menu__user__state__following
-        %p6 0
-        %p フォロー
-      .menu__user__state__followed
-        %h6 0
-        %p フォロワー
-  .menu__pickstream
-    %p 人気ユーザー
-  .menu__timeline
-    .menu__timeline__face
-    .menu__timeline__name
-    .menu__timeline__picktime
-    .menu__timeline__comment
-    .menu__timeline__article-name
-    .menu__timeline__article-pick
+
+-if user_signed_in?
+  .menu
+    .menu__user
+      .menu__user__box
+        .menu__user__box__face
+        .menu__user__box__name=current_user.name
+        .menu__user__box__job="#{current_user.company} #{+current_user.position}"
+      .menu__user__state.clearfix
+        .menu__user__state__following
+          %p6 0
+          %p フォロー
+        .menu__user__state__followed
+          %h6 0
+          %p フォロワー
+    .menu__pickstream
+      %p タイムライン
+    .menu__timeline
+      .menu__timeline__face
+      .menu__timeline__name
+      .menu__timeline__picktime
+      .menu__timeline__comment
+      .menu__timeline__article-name
+      .menu__timeline__article-pick
+
+-else
+  .menu
+    .menu__user
+      .menu__user__box
+        .menu__user__box__face
+        .menu__user__box__name No Account
+        .menu__user__box__signup
+          =link_to 'アカウントを作成する', new_user_registration_path
+      .menu__user__state.clearfix
+        .menu__user__state__following
+          %p6 -
+          %p フォロー
+        .menu__user__state__followed
+          %h6 -
+          %p フォロワー
+    .menu__pickstream
+      %p 人気ユーザー
+    .menu__timeline
+      .menu__timeline__face
+      .menu__timeline__name
+      .menu__timeline__picktime
+      .menu__timeline__comment
+      .menu__timeline__article-name
+      .menu__timeline__article-pick
 
 .contents
   .contents__top

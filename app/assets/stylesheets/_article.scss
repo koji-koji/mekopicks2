@@ -32,6 +32,26 @@
         background-color: pink;
         margin: 0 auto
       }
+      &__name {
+        font-size: 14px;
+        text-align: center;
+        font-weight: 700;
+        margin: 12px 8px 0;
+      }
+      &__job {
+        font-size: 10px;
+        font-color: #666;
+        text-align: center;
+        word-break: break-all;
+        margin-top: 3px;
+      }
+      &__signup {
+        width: 192px;
+        font-size: 10px;
+        font-color: #666;
+        text-align: center;
+        word-break: break-all;
+      }
     }
     &__state__following{
       width: 95px;
