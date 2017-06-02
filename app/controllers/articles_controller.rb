@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @article = Article.all
+    @art = Article.new
   end
 
   def show
@@ -20,17 +21,18 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+    # @article = Article.new(article_params)
+    Article.create(article_params)
+    # respond_to do |format|
+    #   if @article.save
+    #     format.html { redirect_to @article, notice: 'Article was successfully created.' }
+    #     format.json { render :show, status: :created, location: @article }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @article.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    redirect_to root_path
   end
 
   # PATCH/PUT /articles/1
@@ -65,6 +67,11 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :image, :source)
+      agent = Mechanize.new
+      page = agent.get(params[:article][:url])
+      content = page.at('meta[property="og:description"]')[:content]
+      site_name = page.at('meta[property="og:site_name"]')[:content]
+      # params.require(:article).permit(:title, :image, :source)
+      params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name)
     end
 end

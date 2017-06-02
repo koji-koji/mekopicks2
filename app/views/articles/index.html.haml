@@ -84,6 +84,9 @@
           =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__news__picks__new-arrival__news-link'
           .contents__news__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
           .contents__news__picks__new-arrival__news__source マッシュメディア 224分前
+      =form_for @art do |f|
+        =f.text_field :url, placeholder: "URLを入力"
+      %h1 hoge
       .news__box
         .news__box__image
         .news__box__number 0
@@ -100,17 +103,6 @@
           %li.news__box__pickers__face
           %li.news__box__pickers__face
         .news__box__source ホゲホゲ
-
-      / .contents__news__pick__image
-      / .contents__news__pick__number
-      / .contents__news__pick__title
-      / .contents__news__pick__picker
-      /   .contents__news__pick__picker__face
-      /   .contents__news__pick__picker__name
-      /   .contents__news__pick__picker__job
-      /   .contents__news__pick__picker__comment
-      / .contents__news__pick__pickers-face
-      / .contents__news__pick__source
 
     .contents__news__recomend
       .contents__news__recomend__tab
