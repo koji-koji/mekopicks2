@@ -3,6 +3,7 @@ class CreatePicks < ActiveRecord::Migration[5.0]
     create_table :picks do |t|
       t.string :user_id
       t.string :article_id
+      t.text :comment
       t.timestamps
     end
   end
