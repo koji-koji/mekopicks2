@@ -1,15 +1,57 @@
-.header
-  .header__menu fuga
-  .header__detection fuga
-  .header__logo
-  .header__signup
-  .header__login
-.user__menu
-.header__line
+= render partial: "frame"
+
 .contents
-  .contents__body
-    .contents__body__news
-    .contents__body__comments
-  .contents__info
-  .contents__ranking__comment
-.comment-line
+  .contents__back
+    %p ←総合トップ
+  .contents__news
+    .contents__news__picks.clearfix
+      .contents__news__picks-left
+        .contents__news__picks-left-top
+          .contents__news__picks-left-top__image
+          .contents__news__picks-left-top__number
+          .contents__news__picks-left-top__title アルファ碁同士の棋譜公開 碁界騒然「見たことない」
+          .contents__news__picks-left-top__source 朝日新聞デジタル
+          .contents__news__picks-left-top__link 続きを読む
+        .contents__news__picks-left-bottom
+          .contents__news__picks-left-bottom__pickbox.clearfix
+            .contents__news__picks-left-bottom__pickbox__face
+            .contents__news__picks-left-bottom__pickbox__comment
+            .contents__news__picks-left-bottom__pickbox__share シェアする
+            .contents__news__picks-left-bottom__pickbox__pick Pick
+          .contents__news__picks-left-bottom__commentbox
+            %p 選択しているユーザー
+            .line
+            .commentbox__unit
+              .commnetbox__unit__line.clearfix
+                .commentbox__unit__line__face
+                .commentbox__unit__line__menu
+                .commentbox__unit__line__name koyama koji
+                .commentbox__unit__line__job 無職
+              .commentbox__unit__comment
+                .commentbox__unit__comment__text hogehogeshogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!
+                .commentbox__unit__comment__like
+            .line
+            %p フォローしているユーザーのコメント
+            .line
+            .contents__news__picks-left-bottom__commentbox__unit
+              .contents__news__picks-left-bottom__commentbox__unit__face
+              .contents__news__picks-left-bottom__commentbox__unit__name
+              .contents__news__picks-left-bottom__commentbox__unit__job
+              .contents__news__picks-left-bottom__commentbox__unit__comment
+              .contents__news__picks-left-bottom__commentbox__unit__like
+          .contents__news__picks-left-bottom__commentbox
+            %p おすすめのユーザーのコメント
+            .contents__news__picks-left-bottom__commentbox__unit
+              .contents__news__picks-left-bottom__commentbox__unit__face
+              .contents__news__picks-left-bottom__commentbox__unit__name
+              .contents__news__picks-left-bottom__commentbox__unit__job
+              .contents__news__picks-left-bottom__commentbox__unit__comment
+              .contents__news__picks-left-bottom__commentbox__unit__like
+
+
+      .contents__news__picks-right
+/     .contents__body__news
+/     .contents__body__comments
+/   .contents__info
+/   .contents__ranking__comment
+/ .comment-line
