@@ -24,17 +24,18 @@ class PicksController < ApplicationController
   # POST /picks
   # POST /picks.json
   def create
-    @pick = Pick.new(pick_params)
+    Pick.create(pick_params)
+    redirect_to article_path(params[:article_id])
 
-    respond_to do |format|
-      if @pick.save
-        format.html { redirect_to @pick, notice: 'Pick was successfully created.' }
-        format.json { render :show, status: :created, location: @pick }
-      else
-        format.html { render :new }
-        format.json { render json: @pick.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @pick.save
+    #     format.html { redirect_to @pick, notice: 'Pick was successfully created.' }
+    #     format.json { render :show, status: :created, location: @pick }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @pick.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /picks/1
@@ -69,6 +70,6 @@ class PicksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pick_params
-      params.require(:pick).permit(:user_id, :article_id)
+      params.require(:pick).permit(:comment).merge(user_id: current_user.id, article_id: params[:article_id])
     end
 end
