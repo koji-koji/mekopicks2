@@ -15,9 +15,10 @@
         .contents__news__picks-left-bottom
           .contents__news__picks-left-bottom__pickbox.clearfix
             .contents__news__picks-left-bottom__pickbox__face
-            .contents__news__picks-left-bottom__pickbox__comment
-            .contents__news__picks-left-bottom__pickbox__share シェアする
-            .contents__news__picks-left-bottom__pickbox__pick Pick
+            =form_for [@article,@pick] do |f|
+              =f.text_field :comment, placeholder: "コメントを書く(任意)",class: 'contents__news__picks-left-bottom__pickbox__comment'
+              .contents__news__picks-left-bottom__pickbox__share シェアする
+              =f.submit "Pick",class: 'contents__news__picks-left-bottom__pickbox__pick'
           .contents__news__picks-left-bottom__commentbox
             %p 選択しているユーザー
             .line
