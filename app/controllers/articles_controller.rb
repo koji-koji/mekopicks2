@@ -7,11 +7,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @pick = Pick.new
+    @article = Article.find(params[:id])
   end
 
   # GET /articles/new
   def new
-    @article = Article.new
+
+
   end
 
   # GET /articles/1/edit
