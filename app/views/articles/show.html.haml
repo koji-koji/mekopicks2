@@ -8,10 +8,10 @@
       .contents__news__picks-left
         .contents__news__picks-left-top
           .contents__news__picks-left-top__image
-          .contents__news__picks-left-top__number
-          .contents__news__picks-left-top__title アルファ碁同士の棋譜公開 碁界騒然「見たことない」
-          .contents__news__picks-left-top__source 朝日新聞デジタル
-          .contents__news__picks-left-top__link 続きを読む
+          .contents__news__picks-left-top__number hogepick
+          .contents__news__picks-left-top__title= @article.title
+          .contents__news__picks-left-top__source= @article.source
+          =link_to '続きを読む', "#{@article.url}",class: 'contents__news__picks-left-top__link'
         .contents__news__picks-left-bottom
           .contents__news__picks-left-bottom__pickbox.clearfix
             .contents__news__picks-left-bottom__pickbox__face

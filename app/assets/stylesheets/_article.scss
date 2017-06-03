@@ -174,7 +174,6 @@
 
 .contents {
   padding: 50px 0 0 192px;
-
   &__back{
     height:40px;
     width: 100%;
@@ -200,12 +199,15 @@
         width: 100%;
         margin-bottom: 8px;
         background-color: white;
+        position: relative;
         &__image {
           height: 210px;
           background-color: gray;
         }
         &__number {
-
+          position: absolute;
+          top: 20px;
+          right: 0;
         }
         &__title {
           font-size: 24px;
@@ -220,10 +222,12 @@
         }
         &__link {
           height: 42px;
-          width: auto;
+          width: 480px;
+          display: block;
           font-size: 14px;
           color: #37509C;
           text-align: center;
+          text-decoration: none;
           border:1px solid #37509C;
           box-sizing: border-box;
           border-radius: 2px;
