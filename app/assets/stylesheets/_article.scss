@@ -254,12 +254,18 @@
             margin-top: 2px;
           }
           &__comment {
+            border:none;
+            background:none;
             width: 218px;
             height: 44px;
-            background-color: #EFEFEF;
+            background-color: white;
+            border: 1px solid #d9d9d9;
             border-radius: 2px;
             float: left;
+            line-height: 50px;
+            padding-left: 20px;
             margin: 0 8px 0 12px;
+            box-sizing: border-box;
           }
           &__share {
             height: 44px;
@@ -270,6 +276,8 @@
             float: left;
           }
           &__pick {
+            border:none;
+            background:none;
             width: 79px;
             height: 44px;
             border-radius: 2px;
@@ -323,6 +331,7 @@
           }
           &__comment {
             position: relative;
+            margin-top: 8px;
             &__text {
               width: 380px;
               font-size: 14px;
