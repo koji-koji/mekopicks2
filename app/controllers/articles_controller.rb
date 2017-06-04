@@ -7,8 +7,15 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @pick = Pick.new
     @article = Article.find(params[:id])
+    # if current_user.picks.map{|i| [:article_id] == params[:id]}
+    # binding.pry
+    # if @article.users.ids.include?(current_user.id)
+    if @article.picks.map{|i| i[:user_id].to_i}.include?(current_user.id)
+      @pick = Pick.where(article_id: params[:id]).where(user_id: current_user.id)[0]
+    else
+      @pick = Pick.new
+    end
   end
 
   # GET /articles/new
