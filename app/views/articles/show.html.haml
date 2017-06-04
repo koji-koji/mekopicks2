@@ -1,5 +1,4 @@
 = render partial: "frame"
-
 .contents
   .contents__back
     %p ←総合トップ
@@ -21,6 +20,8 @@
               =f.submit "Pick",class: 'contents__news__picks-left-bottom__pickbox__pick'
           .contents__news__picks-left-bottom__commentbox
             %p 選択しているユーザー
+            -@article.picks.reverse_each do |pick|
+              = render partial: 'commentbox' ,locals: {pick: pick}
             .line
             .commentbox__unit
               .commnetbox__unit__line.clearfix
