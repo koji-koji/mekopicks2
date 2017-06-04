@@ -41,15 +41,17 @@ class PicksController < ApplicationController
   # PATCH/PUT /picks/1
   # PATCH/PUT /picks/1.json
   def update
-    respond_to do |format|
-      if @pick.update(pick_params)
-        format.html { redirect_to @pick, notice: 'Pick was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pick }
-      else
-        format.html { render :edit }
-        format.json { render json: @pick.errors, status: :unprocessable_entity }
-      end
-    end
+    @pick.update(pick_params)
+    redirect_to article_path(params[:article_id])
+    # respond_to do |format|
+    #   if @pick.update(pick_params)
+    #     format.html { redirect_to @pick, notice: 'Pick was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @pick }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @pick.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /picks/1
