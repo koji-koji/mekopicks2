@@ -1,5 +1,4 @@
 = render partial: "frame"
-
 .contents
   .contents__back
     %p ←総合トップ
@@ -8,18 +7,21 @@
       .contents__news__picks-left
         .contents__news__picks-left-top
           .contents__news__picks-left-top__image
-          .contents__news__picks-left-top__number
-          .contents__news__picks-left-top__title アルファ碁同士の棋譜公開 碁界騒然「見たことない」
-          .contents__news__picks-left-top__source 朝日新聞デジタル
-          .contents__news__picks-left-top__link 続きを読む
+          .contents__news__picks-left-top__number hogepick
+          .contents__news__picks-left-top__title= @article.title
+          .contents__news__picks-left-top__source= @article.source
+          =link_to '続きを読む', "#{@article.url}",class: 'contents__news__picks-left-top__link'
         .contents__news__picks-left-bottom
           .contents__news__picks-left-bottom__pickbox.clearfix
             .contents__news__picks-left-bottom__pickbox__face
-            .contents__news__picks-left-bottom__pickbox__comment
-            .contents__news__picks-left-bottom__pickbox__share シェアする
-            .contents__news__picks-left-bottom__pickbox__pick Pick
+            =form_for [@article,@pick] do |f|
+              =f.text_field :comment, placeholder: "コメントを書く(任意)",class: 'contents__news__picks-left-bottom__pickbox__comment'
+              .contents__news__picks-left-bottom__pickbox__share シェアする
+              =f.submit "Pick",class: 'contents__news__picks-left-bottom__pickbox__pick'
           .contents__news__picks-left-bottom__commentbox
             %p 選択しているユーザー
+            -@article.picks.reverse_each do |pick|
+              = render partial: 'commentbox' ,locals: {pick: pick}
             .line
             .commentbox__unit
               .commnetbox__unit__line.clearfix

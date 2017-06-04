@@ -78,6 +78,7 @@
 
   |Column       |Type         |Options                   |
   |:-----------:|:-----------:|:------------------------:|
+  |comment      |text         |                          |
   |user_id      |string       |ON UPDATE CASCADE ON DELETE CASCADE|
   |article_id   |string       |ON UPDATE CASCADE ON DELETE CASCADE|
   |timestamps   |timestamps   |                          |

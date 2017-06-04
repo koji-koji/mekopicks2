@@ -174,7 +174,6 @@
 
 .contents {
   padding: 50px 0 0 192px;
-
   &__back{
     height:40px;
     width: 100%;
@@ -200,12 +199,15 @@
         width: 100%;
         margin-bottom: 8px;
         background-color: white;
+        position: relative;
         &__image {
           height: 210px;
           background-color: gray;
         }
         &__number {
-
+          position: absolute;
+          top: 20px;
+          right: 0;
         }
         &__title {
           font-size: 24px;
@@ -220,10 +222,12 @@
         }
         &__link {
           height: 42px;
-          width: auto;
+          width: 480px;
+          display: block;
           font-size: 14px;
           color: #37509C;
           text-align: center;
+          text-decoration: none;
           border:1px solid #37509C;
           box-sizing: border-box;
           border-radius: 2px;
@@ -250,12 +254,18 @@
             margin-top: 2px;
           }
           &__comment {
+            border:none;
+            background:none;
             width: 218px;
             height: 44px;
-            background-color: #EFEFEF;
+            background-color: white;
+            border: 1px solid #d9d9d9;
             border-radius: 2px;
             float: left;
+            line-height: 50px;
+            padding-left: 20px;
             margin: 0 8px 0 12px;
+            box-sizing: border-box;
           }
           &__share {
             height: 44px;
@@ -266,6 +276,8 @@
             float: left;
           }
           &__pick {
+            border:none;
+            background:none;
             width: 79px;
             height: 44px;
             border-radius: 2px;
@@ -319,6 +331,7 @@
           }
           &__comment {
             position: relative;
+            margin-top: 8px;
             &__text {
               width: 380px;
               font-size: 14px;
