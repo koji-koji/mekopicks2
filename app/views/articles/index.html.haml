@@ -3,6 +3,8 @@
 .contents
   .contents__top
     .contents__top-center
+      =form_for @article do |f|
+        =f.text_field :url, placeholder: "URLを入力"
       .contents__top-center__picknumber
       .contents__top-center__title
       .contents__top-center__newssource
@@ -23,25 +25,8 @@
           =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__news__picks__new-arrival__news-link'
           .contents__news__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
           .contents__news__picks__new-arrival__news__source マッシュメディア 224分前
-      =form_for @art do |f|
-        =f.text_field :url, placeholder: "URLを入力"
-      %h1 hoge
-      .news__box
-        .news__box__image
-        .news__box__number 0
-        .news__box__title 日本版GPS衛生「みちびき」を打ち上げ
-        .news__box__picker
-          .news__box__picker__face
-          .news__box__picker__name 川奈 一郎
-          .news__box__picker__job JapanTaxi 日本交通
-          .news__box__picker__comment 待ってました！導きを利用し、2年以内にタクシーメーターをアプリ化します！
-        %ul.news__box__pickers.clearfix
-          %li.news__box__pickers__face
-          %li.news__box__pickers__face
-          %li.news__box__pickers__face
-          %li.news__box__pickers__face
-          %li.news__box__pickers__face
-        .news__box__source ホゲホゲ
+      %ul
+        =render partial: "article", collection: @articles
 
     .contents__news__recomend
       .contents__news__recomend__tab

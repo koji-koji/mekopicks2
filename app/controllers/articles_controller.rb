@@ -2,8 +2,9 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @article = Article.all
-    @art = Article.new
+    @articles = Article.all.order("id DESC").limit(7)
+    @article = Article.new
+    @picks = Pick.all.order("id DESC")
   end
 
   def show
