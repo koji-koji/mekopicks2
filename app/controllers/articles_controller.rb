@@ -33,7 +33,6 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    # @article = Article.new(article_params)
     Article.create(article_params)
     # respond_to do |format|
     #   if @article.save
@@ -83,7 +82,8 @@ class ArticlesController < ApplicationController
       page = agent.get(params[:article][:url])
       content = page.at('meta[property="og:description"]')[:content]
       site_name = page.at('meta[property="og:site_name"]')[:content]
+      site_image = page.at('meta[name="twitter:image"]')[:content]
       # params.require(:article).permit(:title, :image, :source)
-      params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name)
+      params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
     end
 end

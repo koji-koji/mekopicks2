@@ -71,4 +71,6 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
 gem 'mechanize'
+gem 'carrierwave'
+gem 'mini_magick'
 

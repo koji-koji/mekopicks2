@@ -16,7 +16,7 @@
   .menu
     .menu__user
       .menu__user__box
-        .menu__user__box__face
+        =image_tag("#{current_user.face}", class: "menu__user__box__face")
         .menu__user__box__name=current_user.name
         .menu__user__box__job="#{current_user.company} #{+current_user.position}"
       .menu__user__state.clearfix
