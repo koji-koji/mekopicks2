@@ -12,11 +12,12 @@ class ArticlesController < ApplicationController
     # if current_user.picks.map{|i| [:article_id] == params[:id]}
     # binding.pry
     # if @article.users.ids.include?(current_user.id)
-    if @article.picks.map{|i| i[:user_id].to_i}.include?(current_user.id)
-      @pick = Pick.where(article_id: params[:id]).where(user_id: current_user.id)[0]
-    else
-      @pick = Pick.new
-    end
+    # if @article.picks.map{|i| i[:user_id].to_i}.include?(current_user.id)
+    #   @pick = Pick.where(article_id: params[:id]).where(user_id: current_user.id)[0]
+    # else
+    #   @pick = Pick.new
+    # end
+    @pick = Pick.where(article_id: params[:id]).find_or_initialize_by(user_id: current_user.id)
   end
 
   # GET /articles/new
