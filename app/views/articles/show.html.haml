@@ -6,14 +6,17 @@
     .contents__news__picks.clearfix
       .contents__news__picks-left
         .contents__news__picks-left-top
-          .contents__news__picks-left-top__image
-          .contents__news__picks-left-top__number hogepick
+          -unless @article.image.nil?
+            .contents__news__picks-left-top-top
+              =image_tag("#{@article.image}", class: "contents__news__picks-left-top-top__image")
+          .contents__news__picks-left-top__number= "#{@article.picks.length} Picks"
           .contents__news__picks-left-top__title= @article.title
           .contents__news__picks-left-top__source= @article.source
+          .contents__news__picks-left-top__text= @article.text
           =link_to '続きを読む', "#{@article.url}",class: 'contents__news__picks-left-top__link'
         .contents__news__picks-left-bottom
           .contents__news__picks-left-bottom__pickbox.clearfix
-            .contents__news__picks-left-bottom__pickbox__face
+            =image_tag("#{current_user.face}", class: "contents__news__picks-left-bottom__pickbox__face")
             =form_for [@article,@pick] do |f|
               =f.text_field :comment, placeholder: "コメントを書く(任意)",class: 'contents__news__picks-left-bottom__pickbox__comment'
               .contents__news__picks-left-bottom__pickbox__share シェアする
