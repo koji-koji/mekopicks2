@@ -26,15 +26,12 @@
         .menu__user__state__followed
           %h6 0
           %p フォロワー
-    .menu__pickstream
-      %p タイムライン
+      .menu__user__pickstream
+        %p タイムライン
     .menu__timeline
-      .menu__timeline__face
-      .menu__timeline__name
-      .menu__timeline__picktime
-      .menu__timeline__comment
-      .menu__timeline__article-name
-      .menu__timeline__article-pick
+      %ul
+        =render partial: "pick", collection: @picks
+
 -else
   .menu
     .menu__user
@@ -50,12 +47,6 @@
         .menu__user__state__followed
           %h6 -
           %p フォロワー
-    .menu__pickstream
-      %p 人気ユーザー
-    .menu__timeline
-      .menu__timeline__face
-      .menu__timeline__name
-      .menu__timeline__picktime
-      .menu__timeline__comment
-      .menu__timeline__article-name
-      .menu__timeline__article-pick
+      .menu__pickstream
+        %p 人気ユーザー
+    =render partial: "pick", collection: @picks

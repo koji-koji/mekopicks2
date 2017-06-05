@@ -1,0 +1,17 @@
+%li
+  .news__box
+    .news__box__image
+    .news__box__number="#{article.picks.length}Pick"
+    .news__box__title=article.title
+    .news__box__picker
+      .news__box__picker__face
+      .news__box__picker__name
+      .news__box__picker__job=article.picks[0].user.name
+      .news__box__picker__comment=article.picks[0].comment
+    %ul.news__box__pickers.clearfix
+      %li.news__box__pickers__face
+      %li.news__box__pickers__face
+      %li.news__box__pickers__face
+      %li.news__box__pickers__face
+      %li.news__box__pickers__face
+    .news__box__source=article.source
