@@ -47,6 +47,8 @@
         .menu__user__state__followed
           %h6 -
           %p フォロワー
-      .menu__pickstream
+      .menu__user__pickstream
         %p 人気ユーザー
-    =render partial: "pick", collection: @picks
+    .menu__timeline
+      %ul
+        =render partial: "pick", collection: @picks

@@ -2,6 +2,7 @@
 .commentbox__unit
   .commnetbox__unit__line.clearfix
     .commentbox__unit__line__face
+      =render partial: 'image', locals: { image: pick.user.face}
     .commentbox__unit__line__menu
     .commentbox__unit__line__name= pick.user.name
     .commentbox__unit__line__job= pick.user.company
