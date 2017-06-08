@@ -1,12 +1,12 @@
 = render partial: "frame"
 .contents
   .contents__back
-    %p ←総合トップ
+    =link_to "←総合トップ", root_path, class: 'contents__back__root'
   .contents__news
     .contents__news__picks.clearfix
       .contents__news__picks-left
         .contents__news__picks-left-top
-          -unless @article.image.nil?
+          -if @article.image.present?
             .contents__news__picks-left-top-top
               =image_tag("#{@article.image}", class: "contents__news__picks-left-top-top__image")
           .contents__news__picks-left-top__number= "#{@article.picks.length} Picks"
@@ -16,25 +16,18 @@
           =link_to '続きを読む', "#{@article.url}",class: 'contents__news__picks-left-top__link'
         .contents__news__picks-left-bottom
           .contents__news__picks-left-bottom__pickbox.clearfix
-            =image_tag("#{current_user.face}", class: "contents__news__picks-left-bottom__pickbox__face")
-            =form_for [@article,@pick] do |f|
-              =f.text_field :comment, placeholder: "コメントを書く(任意)",class: 'contents__news__picks-left-bottom__pickbox__comment'
-              .contents__news__picks-left-bottom__pickbox__share シェアする
-              =f.submit "Pick",class: 'contents__news__picks-left-bottom__pickbox__pick'
+            =image_tag("#{current_user.face}", class: "contents__news__picks-left-bottom__pickbox__face") if user_signed_in?
+            -if user_signed_in?
+              =form_for [@article,@pick] do |f|
+                =f.text_field :comment, placeholder: "コメントを書く(任意)",class: 'contents__news__picks-left-bottom__pickbox__comment'
+                .contents__news__picks-left-bottom__pickbox__share シェアする
+                =f.submit "Pick",class: 'contents__news__picks-left-bottom__pickbox__pick'
           .contents__news__picks-left-bottom__commentbox
             %p 選択しているユーザー
-            -@article.picks.reverse_each do |pick|
-              = render partial: 'commentbox' ,locals: {pick: pick}
             .line
             .commentbox__unit
               .commnetbox__unit__line.clearfix
-                .commentbox__unit__line__face
-                .commentbox__unit__line__menu
-                .commentbox__unit__line__name koyama koji
-                .commentbox__unit__line__job 無職
-              .commentbox__unit__comment
-                .commentbox__unit__comment__text hogehogeshogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!hogehogehogehogehoge!
-                .commentbox__unit__comment__like
+                = render partial: 'commentbox' ,collection: @article.picks ,as: "pick"
             .line
             %p フォローしているユーザーのコメント
             .line

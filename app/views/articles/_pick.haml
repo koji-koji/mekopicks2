@@ -1,8 +1,8 @@
 %li
-  .menu__timeline__face
-  .menu__timeline__name=pick.user.name
+  =link_to render(partial: 'image', locals: {image: pick.user.face}), "/users/#{pick.user.id}"
+  =link_to "#{pick.user.name}","/users/#{pick.user.id}",class: "menu__timeline__name"
   .menu__timeline__picktime 1分
   .menu__timeline__comment=pick.comment
-  =link_to "#{pick.article.title}", "#{pick.article.url}", class: "menu__timeline__link"
+  =link_to "#{pick.article.title}", "/articles/#{pick.article_id}", class: "menu__timeline__link"
   %p をPickしました。
   .line

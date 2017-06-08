@@ -1,0 +1,26 @@
+.header
+.content
+  .content-top
+    .content-top__user
+      .content-top__user__info.clearfix
+        .content-top__user__info__face
+          =render partial: 'articles/image', locals: { image: @user.face}
+        .content-top__user__info__name= @user.name
+        .content-top__user__info__job= @user.company
+        .content-top__user__info__like hogehoge Like
+      .content-top__user__state
+        %ul.clearfix
+          %li
+            %span Picks
+          %li.content-top__user__state__following
+            %h4 142
+            %h5 フォロー
+          %li.content-top__user__state__followed
+            %h4 67
+            %h5 フォロー
+          .content-top__user__state__search 検索窓
+  .content__line
+  .content-bottom
+    %ul
+      =render partial: 'article', collection: @articles, as: "article"
+

@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @picks = Pick.all.order("id DESC")
     # if current_user.picks.map{|i| [:article_id] == params[:id]}
     # binding.pry
     # if @article.users.ids.include?(current_user.id)
@@ -17,7 +18,7 @@ class ArticlesController < ApplicationController
     # else
     #   @pick = Pick.new
     # end
-    @pick = Pick.where(article_id: params[:id]).find_or_initialize_by(user_id: current_user.id)
+    @pick = Pick.where(article_id: params[:id]).find_or_initialize_by(user_id: current_user.id) if user_signed_in?
   end
 
   # GET /articles/new
@@ -33,7 +34,9 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    Article.create(article_params)
+    article = Article.new(article_params)
+    article.save
+    Pick.create(article_id: article[:id], user_id: current_user.id)
     # respond_to do |format|
     #   if @article.save
     #     format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -78,11 +81,19 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
+      # カリキュラム終了後にサービスクラスに移行予定
       agent = Mechanize.new
       page = agent.get(params[:article][:url])
       content = page.at('meta[property="og:description"]')[:content]
-      site_name = page.at('meta[property="og:site_name"]')[:content]
-      site_image = page.at('meta[name="twitter:image"]')[:content]
+      site_name = page.at('meta[property="og:site_name"]')[:content] if page.at('meta[property="og:site_name"]')[:content].present?
+      if page.at('meta[property="og:image"]')[:content].present?
+        site_image = page.at('meta[property="og:image"]')[:content]
+      elsif page.at('meta[name="twitter:image"]')[:content].present?
+        site_image = page.at('meta[name="twitter:image"]')[:content]
+      else
+        site_image = nil
+      end
+      # カリキュラム終了後にサービスクラスに移行予定
       # params.require(:article).permit(:title, :image, :source)
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
     end

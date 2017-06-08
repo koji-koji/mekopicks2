@@ -3,98 +3,133 @@
 .contents
   .contents__top
     .contents__top-center
-      =form_for @article do |f|
-        =f.text_field :url, placeholder: "URLを入力"
       .contents__top-center__picknumber
-      .contents__top-center__title
-      .contents__top-center__newssource
+      .contents__top-center__title= @picks.first.article.title
+      .contents__top-center__source= @picks.first.article.source
+      =render partial: 'image', locals: {image: @picks.first.article.image}
     .contents__top-right
       .contents__top-right-top
         .contents__top-right-top__picknumber
-        .contents__top-right-top__title
-        .contents__top-right-top__newssource
+        .contents__top-right-top__special 特集
+        .contents__top-right-top__title= @picks[1].article.title
+        =render partial: 'image', locals: {image: @picks[1].article.image}
       .contents__top-right-bottom
         .contents__top-right-bottom__picknumber
-        .contents__top-right-bottom__title
-        .contents__top-right-bottom__source
-  .contents__news
-    .contents__news__picks
-      .contents__news__picks__new-arrival
-        .contents__news__picks__new-arrival__headline 新着ニュース
-        .contents__news__picks__new-arrival__news
-          =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__news__picks__new-arrival__news-link'
-          .contents__news__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
-          .contents__news__picks__new-arrival__news__source マッシュメディア 224分前
+        .contents__top-right-bottom__special 特集
+        .contents__top-right-bottom__title= @picks[3].article.title
+        =render partial: 'image', locals: {image: @picks[3].article.image}
+  .contents__body
+    .contents__body__picks
+      =form_for @article do |f|
+        =f.text_field :url, placeholder: "URLを入力"
+      .contents__body__picks__new-arrival
+        .contents__body__picks__new-arrival__headline 新着ニュース
+        %ul
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
+              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
+              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
+              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
+              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
+              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
+              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
+          %li
+            .contents__body__picks__new-arrival__news
+              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+              .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
+              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
       %ul
         =render partial: "article", collection: @articles
 
-    .contents__news__recomend
-      .contents__news__recomend__tab
-      .contents__news__recomend__title
-      .contents__news__recomend__subtitle
-      .contents__news__recomend__link
-    .contents__news__original
-      .contents__news__original__line
-        %h2 NewaPicks オリジナル記事
-        %h4 NewsPicks オリジナル記事 一覧を見る
-      .contents__news__original__box
-    .contents__news__feature
-      .contents__news__feature__line
-        %h2 特集：新・経営者の条件
-        %h4 特集：新・経営者の条件 一覧を見る
-      .contents__news__feature__box
-    .contents__news__inovation
-      .contents__news__inovation__line
+    / .contents__body__recomend
+    /   .contents__body__recomend__tab
+    /   .contents__body__recomend__title
+    /   .contents__body__recomend__subtitle
+    /   .contents__body__recomend__link
+    / .contents__body__original
+    /   .contents__body__original__line
+    /     %h2 NewaPicks オリジナル記事
+    /     %h4 NewsPicks オリジナル記事 一覧を見る
+    /   .contents__body__original__box
+    / .contents__body__feature
+    /   .contents__body__feature__line
+    /     %h2 特集：新・経営者の条件
+    /     %h4 特集：新・経営者の条件 一覧を見る
+    /   .contents__body__feature__box
+    .contents__body__inovation
+      .contents__body__inovation__line
         %h2 イノベーション
         .logo
         %h4 イノベーション 一覧を見る
-      .contents__news__inovation__box
-    .contents__news__tech
-    .contents__news__business
-    .contents__news__original
-    .contents__news__feature
-    .contents__news__political-economy
-    .contents__news__market
-    .contents__news__education
+      .contents__body__inovation__box
+    / .contents__body__tech
+    / .contents__body__business
+    / .contents__body__original
+    / .contents__body__feature
+    / .contents__body__political-economy
+    / .contents__body__market
+    / .contents__body__education
 
 
 
 
 
 
-    .contents__news__social
-    .contents__news__job
-    .contents__news__good-old
-    .contents__news__analysis
-  .contents__ranking__user
-    .contents__ranking__user__line
-      %h2 ユーザーランキング
-      %h4 ユーザーランキング 一覧を見る
-    .contents__ranking__user__box
-      .number
-      .contents__ranking__user__box__face
-      .contents__ranking__user__box__info
-        .contents__ranking__user__box__info__name
-        .contents__ranking__user__box__info__tag
-        .contents__ranking__user__box__info__job
-        .contents__ranking__user__box__info__like_number
-      .contents__ranking__user__box___follow-tag
-  .contents__ranking__comment
-    .contents__ranking__comment__line
-      %h2 コメントランキング
-      %h4 コメントランキング 一覧を見る。
-    .contents__ranking__comment__box
-      .contents__ranking__comment__box__user
-        .contents__ranking__comment__box__number
-        .contents__ranking__comment__box__face
-        .contents__ranking__comment__box__name
-        .contents__ranking__comment__box__job
-        .contents__ranking__comment__box__likes
-        .comments__ranking__comment__box__tag
-      .contents__ranking__comment__box__comment
-      .contents__ranking__comment__box__source
-        .contents__ranking__comment__box__source__title
-        .contents__ranking__comment__box__source__publisher
-.footer
-  .footer__line
-  .footer__tag
+/     .contents__body__social
+/     .contents__body__job
+/     .contents__body__good-old
+/     .contents__body__analysis
+/   .contents__ranking__user
+/     .contents__ranking__user__line
+/       %h2 ユーザーランキング
+/       %h4 ユーザーランキング 一覧を見る
+/     .contents__ranking__user__box
+/       .number
+/       .contents__ranking__user__box__face
+/       .contents__ranking__user__box__info
+/         .contents__ranking__user__box__info__name
+/         .contents__ranking__user__box__info__tag
+/         .contents__ranking__user__box__info__job
+/         .contents__ranking__user__box__info__like_number
+/       .contents__ranking__user__box___follow-tag
+/   .contents__ranking__comment
+/     .contents__ranking__comment__line
+/       %h2 コメントランキング
+/       %h4 コメントランキング 一覧を見る。
+/     .contents__ranking__comment__box
+/       .contents__ranking__comment__box__user
+/         .contents__ranking__comment__box__number
+/         .contents__ranking__comment__box__face
+/         .contents__ranking__comment__box__name
+/         .contents__ranking__comment__box__job
+/         .contents__ranking__comment__box__likes
+/         .comments__ranking__comment__box__tag
+/       .contents__ranking__comment__box__comment
+/       .contents__ranking__comment__box__source
+/         .contents__ranking__comment__box__source__title
+/         .contents__ranking__comment__box__source__publisher
+/ .footer
+/   .footer__line
+/   .footer__tag

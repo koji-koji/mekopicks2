@@ -16,7 +16,7 @@
   .menu
     .menu__user
       .menu__user__box
-        =image_tag("#{current_user.face}", class: "menu__user__box__face")
+        =link_to image_tag("#{current_user.face}", class: "menu__user__box__face"),"/users/#{current_user.id}"
         .menu__user__box__name=current_user.name
         .menu__user__box__job="#{current_user.company} #{+current_user.position}"
       .menu__user__state.clearfix
@@ -47,6 +47,8 @@
         .menu__user__state__followed
           %h6 -
           %p フォロワー
-      .menu__pickstream
+      .menu__user__pickstream
         %p 人気ユーザー
-    =render partial: "pick", collection: @picks
+    .menu__timeline
+      %ul
+        =render partial: "pick", collection: @picks
