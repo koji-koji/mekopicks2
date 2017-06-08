@@ -2,9 +2,14 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all.order("id DESC").limit(7)
+    # @articles 3 Article.all.order("id DESC").limit(15)
+
+    # articles = Article.al3
+    # @articles = articles.order("articles.picks.last.id DESC").limit(15)
     @article = Article.new
-    @picks = Pick.all.order("id DESC")
+    @picks = Pick.all.order("updated_at DESC").uniq(:id).limit(15)
+    # binding.pry
+    @articles = Article.all.order("updated_at DESC").uniq(:id).limit(15)
   end
 
   def show
