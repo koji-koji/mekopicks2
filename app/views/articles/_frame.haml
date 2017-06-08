@@ -1,9 +1,10 @@
 .header
   .header__menu
-    =link_to "ログアウト", destroy_user_session_path ,method: :delete
-    =link_to "ログイン", new_user_session_path
-    - if user_signed_in?
-      =link_to "#{current_user.name}",'https://github.com/'
+    -if user_signed_in?
+      =link_to "ログアウト", destroy_user_session_path ,method: :delete
+    -else
+      =link_to "登録", new_user_registration_path
+      =link_to "ログイン", new_user_session_path
   .header__detection
   .header__logo
   .header__user
