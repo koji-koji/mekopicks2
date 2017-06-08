@@ -22,5 +22,5 @@
   .content__line
   .content-bottom
     %ul
-      / =render partial: "articles/article", collection: @articles
+      =render partial: 'article', collection: @articles, as: "article"
 
