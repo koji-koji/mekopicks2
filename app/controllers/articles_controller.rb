@@ -84,7 +84,7 @@ class ArticlesController < ApplicationController
       agent = Mechanize.new
       page = agent.get(params[:article][:url])
       content = page.at('meta[property="og:description"]')[:content]
-      site_name = page.at('meta[property="og:site_name"]')[:content]
+      site_name = page.at('meta[property="og:site_name"]')[:content] if page.at('meta[property="og:site_name"]')[:content].present?
       site_image = page.at('meta[name="twitter:image"]')[:content] if page.at('meta[name="twitter:image"]')[:content].present?
       # params.require(:article).permit(:title, :image, :source)
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
