@@ -81,11 +81,19 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
+      # カリキュラム終了後にサービスクラスに移行予定
       agent = Mechanize.new
       page = agent.get(params[:article][:url])
       content = page.at('meta[property="og:description"]')[:content]
       site_name = page.at('meta[property="og:site_name"]')[:content] if page.at('meta[property="og:site_name"]')[:content].present?
-      site_image = page.at('meta[name="twitter:image"]')[:content] if page.at('meta[name="twitter:image"]')[:content].present?
+      if page.at('meta[property="og:image"]')[:content].present?
+        site_image = page.at('meta[property="og:image"]')[:content]
+      elsif page.at('meta[name="twitter:image"]')[:content].present?
+        site_image = page.at('meta[name="twitter:image"]')[:content]
+      else
+        site_image = nil
+      end
+      # カリキュラム終了後にサービスクラスに移行予定
       # params.require(:article).permit(:title, :image, :source)
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
     end
