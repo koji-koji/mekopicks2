@@ -161,6 +161,8 @@ html{
   padding: 50px 0 0 192px;
   &__top {
     height: 300px;
+    border-bottom: 2px solid #EAEAEA;
+    box-sizing: border-box;
     &-center{
       height: 100%;
       width: 66%;
