@@ -73,4 +73,5 @@ gem 'devise'
 gem 'mechanize'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog'
 
