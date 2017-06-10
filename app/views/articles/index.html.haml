@@ -1,67 +1,69 @@
 = render partial: "frame"
+=form_for @article do |f|
+  =f.text_field :url, placeholder: "URLを入力", class: 'form'
 
-.contents
-  .contents__top
-    .contents__top-center
-      .contents__top-center__picknumber
-      .contents__top-center__title= @picks.first.article.title
-      .contents__top-center__source= @picks.first.article.source
-      =render partial: 'image', locals: {image: @picks.first.article.image}
-    .contents__top-right
-      .contents__top-right-top
-        .contents__top-right-top__picknumber
-        .contents__top-right-top__special 特集
-        .contents__top-right-top__title= @picks[1].article.title
-        =render partial: 'image', locals: {image: @picks[1].article.image}
-      .contents__top-right-bottom
-        .contents__top-right-bottom__picknumber
-        .contents__top-right-bottom__special 特集
-        .contents__top-right-bottom__title= @picks[3].article.title
-        =render partial: 'image', locals: {image: @picks[3].article.image}
-  .contents__body
-    .contents__body__picks
-      =form_for @article do |f|
-        =f.text_field :url, placeholder: "URLを入力"
-      .contents__body__picks__new-arrival
-        .contents__body__picks__new-arrival__headline 新着ニュース
+-if @picks.length > 3
+  .contents
+    .contents__top
+      .contents__top-center
+        .contents__top-center__picknumber
+        .contents__top-center__title= @picks.first.article.title
+        .contents__top-center__source= @picks.first.article.source
+        =render partial: 'image', locals: {image: @picks.first.article.image}
+      .contents__top-right
+        .contents__top-right-top
+          .contents__top-right-top__picknumber
+          .contents__top-right-top__special 特集
+          .contents__top-right-top__title= @picks[1].article.title
+          =render partial: 'image', locals: {image: @picks[1].article.image}
+        .contents__top-right-bottom
+          .contents__top-right-bottom__picknumber
+          .contents__top-right-bottom__special 特集
+          .contents__top-right-bottom__title= @picks[2].article.title
+          =render partial: 'image', locals: {image: @picks[2].article.image}
+    .contents__body
+      .contents__body__picks
+
+        .contents__body__picks__new-arrival
+          .contents__body__picks__new-arrival__headline 新着ニュース
+          %ul
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
+                .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
+                .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
+                .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
+                .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
+                .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
+                .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
+            %li
+              .contents__body__picks__new-arrival__news
+                =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
+                .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
+                .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
         %ul
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title ゲーマーは要チェック！防塵・防水仕様のゲーミング
-              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
-              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
-              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
-              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title イチローは代打で三振　カブス戦
-              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 1時間前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title 日印原子力協定を承認　NPT未加盟国に原発輸出
-              .contents__body__picks__new-arrival__news__source 共同通信 47NEWS 3時間前
-          %li
-            .contents__body__picks__new-arrival__news
-              =link_to '',"http://junk-blog.com/div_a_link/",class: 'contents__body__picks__new-arrival__news-link'
-              .contents__body__picks__new-arrival__news__title 福井県知事、もんじゅ廃炉を容認核燃料は県外搬出へ　ほか　12時トップ5ニュース
-              .contents__body__picks__new-arrival__news__source マッシュメディア 224分前
-      %ul
-        =render partial: "article", collection: @articles
+          =render partial: "article", collection: @articles
 
     / .contents__body__recomend
     /   .contents__body__recomend__tab

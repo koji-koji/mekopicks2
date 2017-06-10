@@ -5,7 +5,10 @@
     .news__box__number="#{article.picks.length}Pick"
     =link_to "#{article.title}", "/articles/#{article.id}", class: 'news__box__title'
     .news__box__picker
-      =link_to render(partial: 'image', locals: {image: article.picks.last.user.face}), "/users/#{article.picks.last.user.id}"
+      -if article.picks.last.user.face .present?
+        =link_to render(partial: 'image', locals: {image: article.picks.last.user.face}), "/users/#{article.picks.last.user.id}"
+      -else
+        =link_to "","/users/#{article.picks.last.user}",class: "image"
       =link_to "#{article.picks.last.user.name}", "/users/#{article.picks.last.user.id}", class: 'news__box__picker__name'
       .news__box__picker__job=article.picks.last.user.company
       .news__box__picker__comment=article.picks.last.comment
