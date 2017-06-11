@@ -5,3 +5,7 @@
 /tmp
 
 *.log
+
+log/capistrano.log
+
+log/development.log
