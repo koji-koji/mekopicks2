@@ -7,9 +7,8 @@ class ArticlesController < ApplicationController
     # articles = Article.al3
     # @articles = articles.order("articles.picks.last.id DESC").limit(15)
     @article = Article.new
-    @picks = Pick.all.order("updated_at DESC").uniq(:id).limit(15)
-    # binding.pry
-    @articles = Article.all.order("updated_at DESC").uniq(:id).limit(15)
+    @picks = Pick.all.order("updated_at DESC").uniq(:id).limit(20)
+    @articles = Article.all.order("updated_at DESC").uniq(:id).limit(60)
   end
 
   def show
