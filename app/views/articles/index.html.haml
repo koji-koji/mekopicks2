@@ -1,6 +1,7 @@
 = render partial: "frame"
-=form_for @article do |f|
-  =f.text_field :url, placeholder: "URLを入力", class: 'form'
+if user_signed_in?
+  =form_for @article do |f|
+    =f.text_field :url, placeholder: "URLを入力", class: 'form'
 
 -if @picks.length > 3
   .contents
