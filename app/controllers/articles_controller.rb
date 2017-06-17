@@ -14,6 +14,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @picks = Pick.all.order("id DESC")
+    @tag = Tag.new
     # if current_user.picks.map{|i| [:article_id] == params[:id]}
     # binding.pry
     # if @article.users.ids.include?(current_user.id)
