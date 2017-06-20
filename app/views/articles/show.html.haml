@@ -51,10 +51,11 @@
       .contents__news__picks-tags
         .contents__news__picks-tags__input.clearfix
           %p 新しいタグを付ける
-          =form_for(@tag) do |f|
-            =f.text_field :name
+          =form_for(@article) do |f|
+            =text_field :tag, :name
+            / = collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name)
             =f.submit "タグを付ける",class: 'button'
-            =hidden_field_tag :article_id, params[:id]
+            / =hidden_field :article_id, params[:id]
           %ul
         .contents__news__picks-tags__added
           %p この記事のタグ
