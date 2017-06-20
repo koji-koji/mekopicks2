@@ -41,9 +41,10 @@
             %p おすすめのユーザーのコメント
             .contents__news__picks-left-bottom__commentbox__unit
               .contents__news__picks-left-bottom__commentbox__unit__face
-              =form_for @tag do |f|
+              =form_for(@tag) do |f|
                 =f.text_field :name
                 =f.submit
+                =hidden_field_tag :article_id, params[:id]
               .contents__news__picks-left-bottom__commentbox__unit__name
               .contents__news__picks-left-bottom__commentbox__unit__job
               .contents__news__picks-left-bottom__commentbox__unit__comment
