@@ -41,17 +41,26 @@
             %p おすすめのユーザーのコメント
             .contents__news__picks-left-bottom__commentbox__unit
               .contents__news__picks-left-bottom__commentbox__unit__face
-              =form_for(@tag) do |f|
-                =f.text_field :name
-                =f.submit
-                =hidden_field_tag :article_id, params[:id]
+
               .contents__news__picks-left-bottom__commentbox__unit__name
               .contents__news__picks-left-bottom__commentbox__unit__job
               .contents__news__picks-left-bottom__commentbox__unit__comment
               .contents__news__picks-left-bottom__commentbox__unit__like
 
 
-      .contents__news__picks-right
+      .contents__news__picks-tags
+        .contents__news__picks-tags__input.clearfix
+          %p 新しいタグを付ける
+          =form_for(@tag) do |f|
+            =f.text_field :name
+            =f.submit "タグを付ける",class: 'button'
+            =hidden_field_tag :article_id, params[:id]
+          %ul
+        .contents__news__picks-tags__added
+          %p この記事のタグ
+          %ol
+            =render partial: "tags",collection: @tags, as: "tag"
+
 /     .contents__body__news
 /     .contents__body__comments
 /   .contents__info
