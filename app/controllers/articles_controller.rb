@@ -29,8 +29,6 @@ class ArticlesController < ApplicationController
 
   # GET /articles/new
   def new
-
-
   end
 
   # GET /articles/1/edit
@@ -58,15 +56,18 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
+    @article.tags.create(tag_params)
+    redirect_to @article
+    # respond_to do |format|
+    #   if @article.update(article_params)
+    #   redirect_to @article
+    #     format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @article }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @article.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /articles/1
@@ -102,5 +103,8 @@ class ArticlesController < ApplicationController
       # カリキュラム終了後にサービスクラスに移行予定
       # params.require(:article).permit(:title, :image, :source)
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
+    end
+    def tag_params
+      params.require(:tag).permit(:name)
     end
 end
