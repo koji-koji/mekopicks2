@@ -24,17 +24,18 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
-
-    respond_to do |format|
-      if @tag.save
-        format.html { redirect_to @tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @tag }
-      else
-        format.html { render :new }
-        format.json { render json: @tag.errors, status: :unprocessable_entity }
-      end
-    end
+    @article = Article.find(params[:article_id])
+    @tag = @article.tags.create(tag_params)
+    redirect_to @article
+    # respond_to do |format|
+    #   if @tag.save
+    #     format.html { redirect_to @article, notice: 'Tag was successfully created.' }
+    #     format.json { render :show, status: :created, location: @tag }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @tag.errors, status: :unprocessable_entity }
+      # end
+    # end
   end
 
   # PATCH/PUT /tags/1
