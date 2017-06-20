@@ -1,0 +1,13 @@
+.header
+
+.tags__content
+  %p#notice= notice
+  %p
+    %b タグ：
+    = @tag.name
+    = link_to 'Edit', edit_tag_path(@tag)
+    \|
+    = link_to 'Back', tags_path
+
+.tags__articles
+  =render partial: "article", collection: @articles, as: "article"

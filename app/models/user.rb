@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :articles, through: :user_articles
   has_many :picks
   has_many :user_articles
+  has_many :tags
 end
