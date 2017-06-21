@@ -53,10 +53,15 @@
           %p 新しいタグを付ける
           =form_for(@article) do |f|
             =text_field :tag, :name,class: 'text_field'
+            %ul.tag_search
             / = collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name)
             =f.submit "タグを付ける",class: 'button'
             / =hidden_field :article_id, params[:id]
-          %ul
+          .line
+          %p 追加するタグ
+        .contents__news__picks-tags__add
+          %ul.add_tag_list
+          .line
         .contents__news__picks-tags__added
           %p この記事のタグ
           %ol
