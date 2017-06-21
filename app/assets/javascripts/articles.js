@@ -29,4 +29,8 @@ $(function(){
       console.log("hoge")
     })
   })
+  $(document).on('click', '.add_tag' , function(){
+    $(".add_tag_list").append(this)
+    console.log("hoge!")
+  })
 });
