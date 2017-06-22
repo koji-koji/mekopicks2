@@ -30,7 +30,13 @@ $(function(){
     })
   })
   $(document).on('click', '.add_tag' , function(){
+    var id = $(this).data('id')
+    var add = `<input type="hidden" name="article[tag_ids][]" value = "${id}"></input>`
     $(".add_tag_list").append(this)
-    console.log("hoge!")
+    $(this).append(add)
+    $(this).addClass('added_tag').removeClass('add_tag')
+  })
+  $(document).on('click', '.added_tag' , function(){
+    $(this).remove()
   })
 });
