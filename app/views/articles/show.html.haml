@@ -50,18 +50,25 @@
 
       .contents__news__picks-tags
         .contents__news__picks-tags__input.clearfix
-          %p 新しいタグを付ける
+          %p タグを選ぶ
           =form_for(@article) do |f|
-            =text_field :tag, :name,class: 'text_field'
+            =text_field :tag, :name, autocomplete: "off", class: 'text_field'
+
             %ul.tag_search
             / = collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name)
-            =f.submit "タグを付ける",class: 'button'
+
             / =hidden_field :article_id, params[:id]
-          .line
-          %p 追加するタグ
-        .contents__news__picks-tags__add
-          %ul.add_tag_list
-          .line
+            .line
+            %p 追加するタグ
+            %ul.add_tag_list
+            .line
+            =f.submit "タグ付けする", class: 'button'
+        .contents__news__picks-tags__create
+          %p 新しいタグを作り、タグ付けする
+          =form_for(@tag) do |f|
+            =f.text_field :name, class: 'tag_field'
+            =f.submit "タグを作る", class: 'button'
+            =hidden_field_tag 'article_id', params[:id]
         .contents__news__picks-tags__added
           %p この記事のタグ
           %ol
