@@ -50,16 +50,16 @@
 
       .contents__news__picks-tags
         .contents__news__picks-tags__input.clearfix
-          %p タグを選ぶ
+          %p タグを更新する
           =form_for(@article) do |f|
-            =text_field :tag, :name, autocomplete: "off", class: 'text_field'
+            =text_field :tag, :name, placeholder: "タグを検索します", autocomplete: "off", class: 'text_field'
 
             %ul.tag_search
             / = collection_check_boxes(:article, :tag_ids, Tag.all, :id, :name)
 
             / =hidden_field :article_id, params[:id]
             .line
-            %p 追加するタグ
+            %p 選択されたタグ
             %ul.add_tag_list
             .line
             =f.submit "タグ付けする", class: 'button'

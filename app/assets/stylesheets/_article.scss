@@ -640,8 +640,9 @@ html{
           margin-bottom: 10px;
         }
         .form{
-          heigth: 50px;
-          width: 100px;
+          height: 50px;
+          width: 100%;
+          display: block;
           float:left;
           background-color: red;
           display: block;
