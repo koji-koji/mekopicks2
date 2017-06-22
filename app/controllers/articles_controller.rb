@@ -38,9 +38,13 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    article = Article.new(article_params)
-    article.save
-    Pick.create(article_id: article[:id], user_id: current_user.id)
+
+
+    if params[:article][:url].present?
+      article = Article.new(article_params)
+      article.save
+      Pick.create(article_id: article[:id], user_id: current_user.id)
+    end
     # respond_to do |format|
     #   if @article.save
     #     format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -89,6 +93,7 @@ class ArticlesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       # カリキュラム終了後にサービスクラスに移行予定
+
       agent = Mechanize.new
       page = agent.get(params[:article][:url])
       content = page.at('meta[property="og:description"]')[:content]
@@ -103,6 +108,7 @@ class ArticlesController < ApplicationController
       # カリキュラム終了後にサービスクラスに移行予定
       # params.require(:article).permit(:title, :image, :source)
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
+
     end
     def tag_params
       params.require(:article).permit({tag_ids: []})
