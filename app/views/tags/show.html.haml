@@ -10,4 +10,5 @@
     = link_to 'Back', tags_path
 
 .tags__articles
-  =render partial: "article", collection: @articles, as: "article"
+  %ul
+    =render partial: "article", collection: @articles, as: "article"

@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @picks = Pick.all.order("id DESC")
     @tag = Tag.new
-    @tags = @article.tags
+    @tags = @article.tags.uniq
     # if current_user.picks.map{|i| [:article_id] == params[:id]}
     # binding.pry
     # if @article.users.ids.include?(current_user.id)
@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    @article.tags.create(tag_params)
+    @article.update(tag_params) if params[:article].present?
     redirect_to @article
     # respond_to do |format|
     #   if @article.update(article_params)
@@ -105,6 +105,6 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:url).merge(title: page.title,text: content,source: site_name, image: site_image)
     end
     def tag_params
-      params.require(:tag).permit(:name)
+      params.require(:article).permit({tag_ids: []})
     end
 end
