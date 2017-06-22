@@ -1,12 +1,8 @@
 $(function(){
   function buildHTML(data) {
     $.each(data, function(i, tags){
-      $('.tag_search').append(
-        `<li class = "add_tag" data-id="${tags.id}">
-          ${tags.name}
-        </li>
-        `
-      )
+      var add_tag =  "<li class = add_tag data-id = " + tags.id  + ">" + tags.name + "</li>"
+      $('.tag_search').append(add_tag)
     })
   }
 
@@ -30,8 +26,8 @@ $(function(){
     })
   })
   $(document).on('click', '.add_tag' , function(){
-    var id = $(this).data('id')
-    var add = `<input type="hidden" name="article[tag_ids][]" value = "${id}"></input>`
+    var id = $(this).data("id")
+    var add = "<input type=hidden name=article[tag_ids][] value=" + id + "></input>"
     $(".add_tag_list").append(this)
     $(this).append(add)
     $(this).addClass('added_tag').removeClass('add_tag')
