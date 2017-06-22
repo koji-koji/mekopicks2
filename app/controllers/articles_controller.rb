@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
-    @article.update(tag_params)
+    @article.update(tag_params) if params[:article].present?
     redirect_to @article
     # respond_to do |format|
     #   if @article.update(article_params)
