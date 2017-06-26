@@ -13,6 +13,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @desc_picks = @article.picks.order("id DESC")
     @picks = Pick.all.order("id DESC")
     @tag = Tag.new
     @tags = @article.tags.uniq
