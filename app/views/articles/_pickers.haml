@@ -1,4 +1,4 @@
 -if pick.user.face.present?
-  =image_tag("#{pick.user.face}", class: 'image')
+  =link_to image_tag("#{pick.user.face}", class: 'image'),"/users/#{pick.user.id}"
 -else
-  .image
+  =link_to "","/users/#{pick.user.id}",class: 'image'
