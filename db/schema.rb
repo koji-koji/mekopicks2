@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617110420) do
+ActiveRecord::Schema.define(version: 20170622222222) do
 
   create_table "article_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "article_id"
@@ -30,11 +30,13 @@ ActiveRecord::Schema.define(version: 20170617110420) do
   end
 
   create_table "picks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "user_id"
-    t.string   "article_id"
+    t.integer  "user_id"
+    t.integer  "article_id"
     t.text     "comment",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["article_id"], name: "index_picks_on_article_id", using: :btree
+    t.index ["user_id"], name: "index_picks_on_user_id", using: :btree
   end
 
   create_table "tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,4 +70,6 @@ ActiveRecord::Schema.define(version: 20170617110420) do
 
   add_foreign_key "article_tags", "articles"
   add_foreign_key "article_tags", "tags"
+  add_foreign_key "picks", "articles"
+  add_foreign_key "picks", "users"
 end

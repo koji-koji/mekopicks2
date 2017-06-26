@@ -13,6 +13,6 @@
       .news__box__picker__job=article.picks.last.user.company
       .news__box__picker__comment=article.picks.last.comment
     %ul.news__box__pickers.clearfix
-      =link_to render(partial: 'pickers', collection: article.picks, as: "pick"), "/users/#{article.picks.last.user.id}"
+      =render partial: 'pickers', collection: article.picks, as: "pick"
       %li.news__box__pickers__face
     .news__box__source=article.source
