@@ -39,11 +39,9 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
 
-
     if params[:article][:url].present?
-      article = Article.new(article_params)
-      article.save
-      Pick.create(article_id: article[:id], user_id: current_user.id)
+      article = Article.create(article_params)
+      article.picks.create( user_id: current_user.id)
     end
     # respond_to do |format|
     #   if @article.save
